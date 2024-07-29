@@ -43,8 +43,10 @@ if uploaded_file is not None:
     # Make prediction
     prediction = model.predict(processed_image)
     predicted_digit = np.argmax(prediction)
+    confidence = np.max(prediction)  # Get the confidence score
 
     # Display the image and prediction
     st.image(image, caption='Uploaded Image', use_column_width=True)
     st.write(f"Predicted Digit: {predicted_digit}")
+    st.write(f"Confidence: {confidence:.2f}")  # Display confidence as a percentage
 
